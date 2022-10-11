@@ -8,11 +8,10 @@ import sys
 
 def diagonalDifference(arr):
     n = len(arr) # length & height of matrix 
-    LRD = RLD = 0 # variables to hold value of left-right and right-left diagonals
+    diff = 0 # running difference
     for i in range (0,n):
-        LRD = LRD + arr[i][i]
-        RLD = RLD + arr[i][n-1-i]
-    return abs(LRD-RLD)
+        diff = diff + arr[i][i]- arr[i][n-1-i]
+    return abs(diff)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
@@ -27,3 +26,5 @@ if __name__ == '__main__':
     result = diagonalDifference(arr)
 
     fptr.write(str(result) + '\n')
+
+## SCORE RECEIVED: 100.00 / ACCEPTED
