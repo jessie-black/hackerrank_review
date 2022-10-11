@@ -31,3 +31,11 @@ if __name__ == '__main__':
     fptr.close()
 
 ## SCORE RECEIVED: 100.00 / ACCEPTED
+
+
+# Alternative solution from user nkstatedev: Brilliant use of % 12 to simplify the code. I appreciate the elegance of this solution.
+# def timeConversion(s):
+#    h = int(s[:2])
+#    msec = s[2:8]
+#    h = h % 12 if s[-2:] == 'AM' else h % 12 + 12
+#    return f"{h:02}{msec}"
