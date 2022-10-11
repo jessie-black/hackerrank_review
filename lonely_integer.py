@@ -10,8 +10,8 @@ import sys
 def lonelyinteger(a):
     unique = [] # new list to hold all numbers encounterd just once
     for n in a:
-        if n in unique: unique.remove(n) # if it's already in the list, remove it (we have found a 2nd occurence)
-        else: unique.append(n) # otherwise add it (we have found a 1st occurrence)
+        unique.remove(n) if n in unique else unique.append(n)
+        # if it's already in the list, remove it (we have found a 2nd occurence), otherwise add it (we have found a 1st occurrence)
     return unique[0]
 
 if __name__ == '__main__':
@@ -26,3 +26,4 @@ if __name__ == '__main__':
     fptr.write(str(result) + '\n')
 
     fptr.close()
+## SCORE RECEIVED: 100.00 / ACCEPTED
