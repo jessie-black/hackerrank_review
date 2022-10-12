@@ -46,3 +46,12 @@ if __name__ == '__main__':
 #  as keys and initialize all values to 0, incrementing by 1 for every word in 'strings'
 #  ... However, for some reason this approach passed the initial 3 test cases but failed the 13 
 #  later test cases upon submission. Created this alternative appraoch.
+
+
+## More elegant solution by user VictorSGhosh: 
+#  def matchingStrings(strings, queries):
+#      return [strings.count (1) for q in queries]
+# This is the kind of concise code that I would like to write more of in python. I'm always
+# astonished by how efficient python can be in terms of lines of code! It is still not intuitive
+# for me to write this concisely BUT I do find I am getting better at refactoring after 
+# writing out initial thoughts/approach.
