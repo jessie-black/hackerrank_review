@@ -7,10 +7,9 @@ import re
 import sys
 
 def pangrams(s):
-    string = s.lower()
-    for letter in ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']:
-        if not letter in string: return 'not pangram'
-    return 'pangram'
+    letters = set(s.lower().replace(' ',''))
+    return 'not pangram' if len(letters)<26 else 'pangram'
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
