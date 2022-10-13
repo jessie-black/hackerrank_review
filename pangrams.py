@@ -1,4 +1,4 @@
-## given a string, return 'pangram' if all letters of the alphabet are present (ignoring case), otherwise 'not pangram'
+## given a string of only letters and spaces, return 'pangram' if all letters of the alphabet are present (ignoring case), otherwise 'not pangram'
 
 import math
 import os
