@@ -14,9 +14,8 @@ def twoArrays(k, A, B):
     # one in ascending order and the other in descending order. Since they are of equal length,
     # if ever two corresponding elements do NOT sum to k or more, the function returns 'NO'
     A.sort()
-    B.sort()
-    B.reverse()
-    for i in range (0,len(A)-1):
+    B.sort(reverse=True)
+    for i in range (len(A)):
         if A[i] + B[i] < k: return 'NO'
     return 'YES'
     
@@ -43,3 +42,7 @@ if __name__ == '__main__':
 
     fptr.close()
 # SCORE: 100.0 / ACCEPTED
+
+# Simplified code somewhat based on solution by sharon_lu -- I did not know 
+# that python's sort() method could accept an argument to sort in reverse. That's
+# convenient! Also, simplified range for i.
