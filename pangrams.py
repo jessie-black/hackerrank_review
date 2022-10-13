@@ -7,8 +7,9 @@ import re
 import sys
 
 def pangrams(s):
-    letters = set(s.lower().replace(' ',''))
-    return 'not pangram' if len(letters)<26 else 'pangram'
+    # remove any spaces and make a lowercase set of all letters appearing in s. 
+    # It cannot be a pangram if there are fewer than 26 letters, so return response accordingly.
+    return 'not pangram' if len(set(s.lower().replace(' ','')))<26 else 'pangram'
 
 
 if __name__ == '__main__':
