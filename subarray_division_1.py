@@ -4,9 +4,7 @@
 #  birth month, and, The sum of the integers on the squares is equal to his birth day.
 #  Determine how many ways she can divide the chocolate."
 #
-#  I interpreted the purpose of this as: given an array s of integers, 
-#  as well as integers d and m, return an int representing how many combinations
-#  of m elements from s add up to a total sum equal to d. 
+#  Fixed solution to accomodate *CONTIGUOUS* referring to elements and not segments within each element.
 import math
 import os
 import random
@@ -15,13 +13,46 @@ import sys
 import itertools
 
 def birthday(s, d, m):
+    #!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+import itertools
+
+def birthday(s, d, m):
+    # goal: return int representing how many sets of 
+    # m contiguous elements of s add up to d
+    n = len(s)
+    if n<m: return 0 # there is no possible solution if there are fewer than m segments.
     tally = 0
-    all_combinations = set(itertools.combinations(s,m))
-    # Get a set of combinations so that there are no duplicates 
-    for i in all_combinations:
-        if sum(i) == d: tally +=1
-        # Add one to the tally for every group that has the correct sum
-    return tally # Return the final count representing all possible correct answers.
+    window_sum = sum(s[:m]) # get the sum of the first m elements
+    if window_sum == d: tally += 1
+    for i in range(n-m): # for all remaining potential windows
+        window_sum = window_sum - s[i] + s[i+m] #remove earlier segemnt, add later segment
+        if window_sum == d: tally += 1
+    return tally
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    s = list(map(int, input().rstrip().split()))
+
+    first_multiple_input = input().rstrip().split()
+
+    d = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    result = birthday(s, d, m)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
   
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
@@ -42,10 +73,4 @@ if __name__ == '__main__':
 
     fptr.close()
     
-## THIS solution worked for the 3 sample cases but failed most of the test cases. 
-#  I was struggling to understand what I had done wrong. I reworked it and came 
-#  to the same general approach, and then re-reading the prompt multiple times I 
-#  realize I had misinterpreted 'continguous' to mean the segments already grouped
-#  into elements of s when in reality the problem was asking for continguous ELEMENTS
-#  of s. (This would have been a situation in which it would have been great to have
-#  a human to confirm that my understanding was accurate...). Reworking in followup.
+## Score: 100.0 / Accepted
